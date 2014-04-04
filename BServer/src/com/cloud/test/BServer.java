@@ -20,6 +20,7 @@ package com.cloud.test;
 import android.os.Binder;
 import android.os.HandlerThread;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.Parcel;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -34,10 +35,12 @@ public class BServer extends Binder implements ICloudManager {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Cloud Manager Service Starts");
+		Looper.prepareMainLooper();
+		android.os.Process
+				.setThreadPriority(android.os.Process.THREAD_PRIORITY_FOREGROUND);
 		ServiceManager.addService("CloudService", new BServer());
-		 
+		Looper.loop(); 
 	}
-  
 
 	public BServer() {
 		this.attachInterface(this, DESCRIPTOR);
