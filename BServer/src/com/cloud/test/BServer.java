@@ -18,9 +18,11 @@
 package com.cloud.test;
 
 import android.os.Binder;
+import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
+import android.os.ServiceManager;
 
 public class BServer extends Binder implements ICloudManager {
 
@@ -31,7 +33,9 @@ public class BServer extends Binder implements ICloudManager {
 	 *            The command-line arguments
 	 */
 	public static void main(String[] args) {
-		System.out.println("Hello world");
+		System.out.println("Cloud Manager Service Starts");
+		ServiceManager.addService("CloudService", new BServer());
+		 
 	}
   
 
