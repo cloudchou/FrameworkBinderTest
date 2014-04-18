@@ -23,32 +23,20 @@ import android.os.ServiceManager;
 
 public class BClient {
 	static final java.lang.String DESCRIPTOR = "com.cloud.test.BServer";
-	
-	public static com.cloud.test.ICloudManager asInterface(
-			android.os.IBinder obj) {
-		if ((obj == null)) {
-			return null;
-		}
-		android.os.IInterface iin = obj.queryLocalInterface(DESCRIPTOR);
-		if (((iin != null) && (iin instanceof com.cloud.test.ICloudManager))) {
-			return ((com.cloud.test.ICloudManager) iin);
-		}
-		return new com.cloud.test.CloudManagerProxy(obj);
-	}
 
 	/**
 	 * Command-line entry point.
 	 * 
 	 * @param args
 	 *            The command-line arguments
-	 * @throws RemoteException 
+	 * @throws RemoteException
 	 */
 	public static void main(String[] args) throws RemoteException {
 		System.out.println("==========Client starts===========");
 		IBinder binder = ServiceManager.getService("CloudService");
-		ICloudManager manager=asInterface(binder);
+		ICloudManager manager = new CloudManagerProxy(binder);
 		manager.print("Hello world");
-		int result=manager.add(2, 3);
-		System.out.println("manager.add(2, 3)="+result);
+		int result = manager.add(2, 3);
+		System.out.println("manager.add(2, 3)=" + result);
 	}
 }
