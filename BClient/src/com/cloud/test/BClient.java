@@ -22,7 +22,7 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 
 public class BClient {
-	static final java.lang.String DESCRIPTOR = "com.cloud.test.BServer";
+ 
 
 	/**
 	 * Command-line entry point.
