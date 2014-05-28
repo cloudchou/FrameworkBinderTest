@@ -6,8 +6,8 @@ BClient下的代码将生成bclient 和 bclient.jar程序，作为BinderService�
 
 编译好后可使用如下命令来测试
 
-adb bserver.jar /system/framework && adb push bserver /system/bin/ && adb shell chmod 755 /system/bin/bserver
+adb push bserver.jar /system/framework && adb push bserver /system/bin/ && adb shell chmod 755 /system/bin/bserver
 
-adb bclient.jar /system/framework && adb push bclient /system/bin/ && adb shell chmod 755 /system/bin/bclient
+adb push bclient.jar /system/framework && adb push bclient /system/bin/ && adb shell chmod 755 /system/bin/bclient
 
 
